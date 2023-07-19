@@ -34,5 +34,28 @@ namespace 同步时间
             MyTime.setSystemTime(DateTime.Now.AddHours(h));
 
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            double h = double.Parse(textBox2.Text);
+            MyTime.setSystemTime(DateTime.Now.AddHours(h));
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            string format = "yyyy-MM-dd HH:mm:ss";
+            textBox3.Text = DateTime.Now.ToString(format);
+            textBox2.Text = "-0.5";
+
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            CultureInfo cultureInfo = CultureInfo.CreateSpecificCulture("en-US");
+            string format = "yyyy-MM-dd HH:mm:ss";
+            DateTime datetime = DateTime.ParseExact(textBox3.Text, format, cultureInfo); // 将字符串转换成日期
+            MyTime.setSystemTime(datetime);//写入windows系统
+
+        }
     }
 }
